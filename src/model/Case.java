@@ -1,22 +1,16 @@
 package model;
 
-public class Case {
-    private int xPos;
-    private int yPos;
+public abstract class Case {
     private boolean isWall;
+    private Position position;
 
-    public Case(int x, int y, boolean w){
-        xPos = x;
-        yPos = y;
+    public Case(Position pos, boolean w){
+        position = pos;
         isWall = w;
     }
 
-    public int getxPos() {
-        return xPos;
-    }
-
-    public int getyPos() {
-        return yPos;
+    public Position getPosition(){
+        return position;
     }
 
     public boolean isWall(){
