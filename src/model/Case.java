@@ -1,6 +1,6 @@
 package model;
 
-public class Case {
+public abstract class Case {
     private int xPos;
     private int yPos;
     private boolean isWall;
