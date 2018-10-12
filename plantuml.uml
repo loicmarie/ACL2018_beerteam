@@ -1,0 +1,64 @@
+@startuml
+
+title Balade dans un labyrinthe
+
+class Entite {
+    -int vie
+    -int posX
+    -int posY
+    -int degat
+}
+
+class Heros {
+
+}
+
+class Monstre {
+    -bool fantome
+}
+
+Entite <|-- Heros
+Entite <|-- Monstre
+
+class Labyrinthe {
+}
+
+Labyrinthe "1" -- "1" Heros
+Labyrinthe "1" -- "0..*" Monstre
+
+class Niveau {
+    -String fichier
+}
+
+Labyrinthe "1" -- "1" Niveau
+
+class Case {
+    -int x
+    -int y
+    -bool mur
+}
+
+Labyrinthe "1" -- "1..*" Case
+
+class Tresor {
+}
+
+class Piege {
+    -int degat
+}
+
+class Magique {
+    -int effet
+}
+
+class Passage {
+    -int arriveeX
+    -int arriveeY
+}
+
+Case <|-- Tresor
+Case <|-- Piege
+Case <|-- Magique
+Case <|-- Passage
+
+@enduml
