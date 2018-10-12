@@ -6,7 +6,7 @@ public class Labyrinth {
     private Hero hero;
     private Monster[] monsters;
 
-    public Labyrinth(){
-
+    public Labyrinth(Level l){
+        level=l;
     }
 }
