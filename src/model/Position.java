@@ -25,4 +25,9 @@ public class Position {
         this.xPos=x;
         this.yPos=y;
     }
+
+    public String toString(){
+        return "(" + Integer.toString(getxPos()) +","+ Integer.toString(getyPos()) +")";
+
+    }
 }
