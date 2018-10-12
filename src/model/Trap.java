@@ -3,8 +3,8 @@ package model;
 public class Trap extends Case {
     private int damage;
 
-    public Trap(int x, int y, boolean w, int d) {
-        super(x, y, w);
+    public Trap(Position pos, boolean w, int d) {
+        super(pos, w);
         damage = d;
     }
 

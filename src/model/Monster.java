@@ -2,13 +2,13 @@ package model;
 
 public class Monster {
 
-    public boolean gost;
+    public boolean ghost;
 
-    public boolean isGost() {
-        return gost;
+    public boolean isGhost() {
+        return ghost;
     }
 
-    public void setGost(boolean gost) {
-        this.gost = gost;
+    public void setGhost(boolean ghost) {
+        this.ghost = ghost;
     }
 }
