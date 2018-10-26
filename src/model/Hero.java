@@ -5,7 +5,6 @@ public class Hero extends Entity {
     public void move(Action action){
     	int x = this.position.getxPos();
     	int y = this.position.getyPos();
-        System.out.println(action);
     	switch(action) {
     		case UP:	 this.position.setyPos(y-1); break;
     		case RIGHT:	 this.position.setxPos(x+1); break;
