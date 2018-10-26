@@ -2,21 +2,15 @@ package model;
 
 public class Hero extends Entity {
 
-    public void move(String direction){
-        if (direction.equals("L")){
-           this.position=new Position(this.position.getxPos()-1, this.position.getyPos());
-        }
-        if (direction.equals("R")){
-            this.position=new Position(this.position.getxPos()+1, this.position.getyPos());
-        }
-        if (direction.equals("D")){
-            this.position=new Position(this.position.getxPos(), this.position.getyPos()+1);
-        }
-        if (direction.equals("U")){
-            this.position=new Position(this.position.getxPos(), this.position.getyPos()-1);
-        }
-        else{
-            this.position=this.position;
+    public void move(Action action){
+    	int x = this.position.getxPos();
+    	int y = this.position.getyPos();
+        System.out.println(action);
+    	switch(action) {
+    		case UP:	 this.position.setyPos(y-1); break;
+    		case RIGHT:	 this.position.setxPos(x+1); break;
+    		case BOTTOM: this.position.setyPos(y+1); break;
+    		case LEFT:	 this.position.setxPos(x-1); break;
         }
     }
 
