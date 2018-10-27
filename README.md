@@ -5,6 +5,11 @@
 A la racine du projet:
 `ant compile jar run`
 
+## Tests
+
+A la racine du projet:
+`ant test`
+
 ## Sprints
 
 ### Sprint 1:
@@ -19,6 +24,7 @@ A la racine du projet:
 	- Création du model: Louise et Leo
 	- Création du main: Louise et Loïc
 	- Build automatique: Loïc
+	- Tests unitaires: Loïc
 
 ### Sprint 2:
 
