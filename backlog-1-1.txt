@@ -1,4 +1,0 @@
-BACKLOG
-
-- En tant qu'utilisateur, je souhaite pouvoir bouger mon personnage dans les quatre directions à l'aide d'entrées au clavier.
-- En tant qu'utilisateur, je souhaite pouvoir connaître la position de mon personnage après chaque mouvement.

@@ -2,63 +2,175 @@
 
 title Balade dans un labyrinthe
 
-class Entite {
-    -int vie
-    -int posX
-    -int posY
-    -int degat
+package "model" #DDDDDD {
+
+    interface Game {
+        +evolve(Cmd userCmd)
+        +isFinished(): boolean
+        +getHero(): Hero
+        +setHero(Hero hero)
+    }
+
+    class LabyrinthGame {
+        -Hero hero
+        --
+        +evolve(Cmd userCmd)
+        +isFinished(): boolean
+        +getHero(): Hero
+        +setHero(Hero hero)
+    }
+
+    Game <|.. LabyrinthGame
+    LabyrinthGame "0" -- "1" Hero : hero
+
+    class Entite {
+        -int vie
+        -int posX
+        -int posY
+        -int degat
+    }
+
+    class Hero {
+
+    }
+
+    class Monstre {
+        -bool fantome
+    }
+
+    Entite <|-- Hero
+    Entite <|-- Monstre
+
+    class LabyrintheGame {
+    }
+
+    LabyrintheGame "1" -- "1" Hero
+    LabyrintheGame "1" -- "0..*" Monstre
+
+    class Niveau {
+        -String fichier
+    }
+
+    LabyrintheGame "1" -- "1" Niveau
+
+    class Case {
+        -int x
+        -int y
+        -bool mur
+    }
+
+    LabyrintheGame "1" -- "1..*" Case
+
+    class Tresor {
+    }
+
+    class Piege {
+        -int degat
+    }
+
+    class Magique {
+        -int effet
+    }
+
+    class Passage {
+        -int arriveeX
+        -int arriveeY
+    }
+
+    class Cmd {
+
+    }
+
+    Case <|-- Tresor
+    Case <|-- Piege
+    Case <|-- Magique
+    Case <|-- Passage
 }
 
-class Heros {
+package "presentation" #DDDDDD {
+
+    class DrawingPanel {
+        - {static} long serialVersionUID
+        - Game game
+        - GamePainter painter
+        - BufferedImage nextImage
+        - BufferedImage currentImage
+        - int width
+        - int height
+        --
+        + drawGame()
+        + paint(Graphics g)
+    }
+
+    interface GamePainter {
+        + {abstract} draw(BufferedImage image, Game game)
+        + {abstract} getWidth(): int
+        + {abstract} getHeight(): int
+    }
+
+    class GraphicalInterface {
+        - DrawingPanel panel
+        - Game game
+        --
+        + paint()
+    }
+
+    class LabyrinthPainter {
+        # {static} int WIDTH
+        # {static} int HEIGHT
+        - int x
+        - int y
+        --
+        + draw(BufferedImage image, Game game)
+        + getWidth(): int
+        + getHeight(): int
+    }
+}
+
+DrawingPanel "0" -- "1" Game : game
+DrawingPanel "0" -- "1" GamePainter : painter
+GraphicalInterface "0" -- "1" DrawingPanel : panel
+LabyrinthPainter ..|> GamePainter
+
+package "application" #DDDDDD {
+
+    interface GameController {
+        -Cmd commandeEnCours
+        --
+        +getCommand(): Cmd
+    }
+
+    class LabyrinthController {
+        -Cmd commandeEnCours
+        --
+        +getCommand(): Cmd
+        +keyPressed(KeyEvent e)
+        +keyReleased(KeyEvent e)
+        +keyTyped(KeyEvent e)
+    }
+
+    class GameEngineGraphical {
+        -Game game
+        -GamePainter gamePainter
+        -GameController gameController
+        -GraphicalInterface gui
+        --
+        +run()
+    }
 
 }
 
-class Monstre {
-    -bool fantome
-}
+KeyListener <|-- GameController
 
-Entite <|-- Heros
-Entite <|-- Monstre
+GameController <|.. LabyrinthController
 
-class Labyrinthe {
-}
+LabyrinthController "0" -- "1" Cmd : commandeEnCours
 
-Labyrinthe "1" -- "1" Heros
-Labyrinthe "1" -- "0..*" Monstre
+GameEngineGraphical "0" -- "1" Game : game
+GameEngineGraphical "0" -- "1" GamePainter : gamePainter
+GameEngineGraphical "0" -- "1" GameController : gameController
+GameEngineGraphical "0" -- "1" GraphicalInterface : gui
 
-class Niveau {
-    -String fichier
-}
 
-Labyrinthe "1" -- "1" Niveau
-
-class Case {
-    -int x
-    -int y
-    -bool mur
-}
-
-Labyrinthe "1" -- "1..*" Case
-
-class Tresor {
-}
-
-class Piege {
-    -int degat
-}
-
-class Magique {
-    -int effet
-}
-
-class Passage {
-    -int arriveeX
-    -int arriveeY
-}
-
-Case <|-- Tresor
-Case <|-- Piege
-Case <|-- Magique
-Case <|-- Passage
 
 @enduml
