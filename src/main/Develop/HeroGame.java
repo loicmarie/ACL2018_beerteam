@@ -13,13 +13,14 @@ import model.Hero;
  *
  *         Version avec personnage qui peut se deplacer. A completer dans les
  *         versions suivantes.
- * 
+ *
  */
 public class HeroGame implements Game {
 
+	private Hero hero;
 	/**
 	 * constructeur avec fichier source pour le help
-	 * 
+	 *
 	 */
 	public HeroGame(String source) {
 		BufferedReader helpReader;
@@ -33,18 +34,19 @@ public class HeroGame implements Game {
 		} catch (IOException e) {
 			System.out.println("Help not available");
 		}
+		this.hero = new Hero(1,2);
 	}
 
 	/**
 	 * faire evoluer le jeu suite a une commande
-	 * 
+	 *
 	 * @param commande
 	 */
 	@Override
 	public void evolve(Cmd commande) {
-		Hero.move(commande);
+		this.hero.move(commande);
 		System.out.println("Execute "+commande);
-		System.out.print("Votre héro est en position" + model.Hero.position.toString());
+		System.out.print("Votre héro est en position" + this.hero.position.toString());
 	}
 
 	/**
@@ -54,6 +56,16 @@ public class HeroGame implements Game {
 	public boolean isFinished() {
 		// le jeu n'est jamais fini
 		return false;
+	}
+
+	@Override
+	public Hero getHero() {
+		return this.hero;
+	}
+
+	@Override
+	public void setHero(Hero hero) {
+		this.hero = hero;
 	}
 
 }

@@ -8,7 +8,7 @@ import java.awt.event.KeyEvent;
  * @author Horatiu Cirstea, Vincent Thomas
  *
  * controleur de type KeyListener
- * 
+ *
  */
 public class HeroController implements GameController {
 
@@ -16,7 +16,7 @@ public class HeroController implements GameController {
 	 * commande en cours
 	 */
 	private Cmd commandeEnCours;
-	
+
 	/**
 	 * construction du controleur par defaut le controleur n'a pas de commande
 	 */
@@ -27,7 +27,7 @@ public class HeroController implements GameController {
 	/**
 	 * quand on demande les commandes, le controleur retourne la commande en
 	 * cours
-	 * 
+	 *
 	 * @return commande faite par le joueur
 	 */
 	public Cmd getCommand() {
@@ -46,12 +46,12 @@ public class HeroController implements GameController {
 		case 'Q':
 			this.commandeEnCours = Cmd.LEFT;
 			break;
-		
+
 		case 'd':
 		case 'D':
 			this.commandeEnCours = Cmd.RIGHT;
 			break;
-		
+
 		case 'z':
 		case 'Z':
 			this.commandeEnCours = Cmd.UP;
@@ -61,7 +61,6 @@ public class HeroController implements GameController {
 			this.commandeEnCours = Cmd.DOWN;
 			break;
 		}
-		
 
 	}
 

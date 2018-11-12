@@ -3,13 +3,13 @@ package model;
 public abstract class Entity{
 
     public int life;
-    public static Position position;
+    public Position position;
     public int strength;
 
     public Entity(int life, Position pos, int strength){
         this.life=life;
         this.strength=strength;
-        Entity.position=pos;
+        this.position=pos;
     }
 
     public Entity(){}
@@ -31,7 +31,7 @@ public abstract class Entity{
     }
 
     public void setPosition(Position position) {
-        Entity.position = position;
+        this.position = position;
     }
 
     public void setStrength(int strength) {

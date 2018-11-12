@@ -12,7 +12,7 @@ import model.Hero;
  * @author Horatiu Cirstea, Vincent Thomas
  *
  * afficheur graphique pour le game
- * 
+ *
  */
 public class Painter implements GamePainter {
 
@@ -26,9 +26,9 @@ public class Painter implements GamePainter {
 
 	/**
 	 * appelle constructeur parent
-	 * 
+	 *
 	 * @param game
-	 *            le jeut est a afficher
+	 *            le jeu est a afficher
 	 */
 	public Painter() {
 	}
@@ -37,9 +37,9 @@ public class Painter implements GamePainter {
 	 * methode  redefinie de Afficheur retourne une image du jeu
 	 */
 	@Override
-	public void draw(BufferedImage im, Hero hero) {
-		int x = Entity.position.getxPos();
-		int y = Entity.position.getyPos();
+	public void draw(BufferedImage im, Game game) {
+		int x = game.getHero().position.getxPos();
+		int y = game.getHero().position.getyPos();
 		Graphics2D crayon = (Graphics2D) im.getGraphics();
 		crayon.setColor(Color.blue);
 		crayon.fillOval(x,y,10,10);

@@ -30,14 +30,14 @@ public class GameEngineGraphical {
 
 	/**
 	 * construit un moteur
-	 * 
+	 *
 	 * @param game
 	 *            game a lancer
 	 * @param gamePainter
 	 *            afficheur a utiliser
 	 * @param gameController
 	 *            controlleur a utiliser
-	 *            
+	 *
 	 */
 	public GameEngineGraphical(Game game, GamePainter gamePainter, GameController gameController) {
 		// creation du game
@@ -52,7 +52,7 @@ public class GameEngineGraphical {
 	public void run() throws InterruptedException {
 
 		// creation de l'interface graphique
-		this.gui = new GraphicalInterface(this.gamePainter,this.gameController);
+		this.gui = new GraphicalInterface(this.gamePainter,this.gameController,this.game);
 
 		// boucle de game
 		while (!this.game.isFinished()) {
