@@ -5,5 +5,5 @@ public enum Action {
 	RIGHT,
 	BOTTOM,
 	LEFT,
-	STOP
+	STOP;
 }
