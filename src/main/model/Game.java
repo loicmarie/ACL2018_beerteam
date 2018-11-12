@@ -1,6 +1,4 @@
-package Develop;
-
-import model.*;
+package model;
 
 /**
  * @author Horatiu Cirstea, Vincent Thomas

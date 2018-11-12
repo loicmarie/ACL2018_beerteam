@@ -1,4 +1,9 @@
-package Develop;
+package application;
+
+import model.Game;
+import model.Cmd;
+import presentation.GamePainter;
+import presentation.GraphicalInterface;
 
 /**
  * @author Horatiu Cirstea, Vincent Thomas

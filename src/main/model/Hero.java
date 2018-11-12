@@ -1,7 +1,5 @@
 package model;
 
-import Develop.Cmd;
-
 public class Hero extends Entity {
 
     public void move(Cmd commandeEnCours){

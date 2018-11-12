@@ -1,11 +1,10 @@
-package Develop;
+package presentation;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
-import model.Entity;
-import model.Hero;
+import model.Game;
 
 
 /**
@@ -14,7 +13,7 @@ import model.Hero;
  * afficheur graphique pour le game
  *
  */
-public class Painter implements GamePainter {
+public class LabyrinthPainter implements GamePainter {
 
 	/**
 	 * la taille des cases
@@ -30,7 +29,7 @@ public class Painter implements GamePainter {
 	 * @param game
 	 *            le jeu est a afficher
 	 */
-	public Painter() {
+	public LabyrinthPainter() {
 	}
 
 	/**

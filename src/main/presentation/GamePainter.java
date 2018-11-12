@@ -1,8 +1,8 @@
-package Develop;
+package presentation;
 
 import java.awt.image.BufferedImage;
 
-import model.Hero;
+import model.Game;
 
 /**
  * @author Horatiu Cirstea, Vincent Thomas

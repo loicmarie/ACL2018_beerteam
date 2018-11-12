@@ -1,21 +1,17 @@
-import model.Hero;
-import model.Action;
-
 import java.util.Scanner;
 
-import Develop.GameEngineGraphical;
-import Develop.HeroController;
-import Develop.HeroGame;
-import Develop.Painter;
+import model.*;
+import presentation.*;
+import application.*;
 
 public class main {
 
     public static void main(String[] args)throws InterruptedException{
 
      		// creation du jeu particulier et de son afficheur
-     		HeroGame game = new HeroGame("helpFilePacman.txt");
-     		Painter painter = new Painter();
-     		HeroController controller = new HeroController();
+     		LabyrinthGame game = new LabyrinthGame("helpFilePacman.txt");
+     		LabyrinthPainter painter = new LabyrinthPainter();
+     		LabyrinthController controller = new LabyrinthController();
 
      		// classe qui lance le moteur de jeu generique
      		GameEngineGraphical engine = new GameEngineGraphical(game, painter, controller);

@@ -1,12 +1,8 @@
-package Develop;
-
+package model;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-
-import model.Hero;
-
 
 /**
  * @author Horatiu Cirstea, Vincent Thomas
@@ -15,14 +11,14 @@ import model.Hero;
  *         versions suivantes.
  *
  */
-public class HeroGame implements Game {
+public class LabyrinthGame implements Game {
 
 	private Hero hero;
 	/**
 	 * constructeur avec fichier source pour le help
 	 *
 	 */
-	public HeroGame(String source) {
+	public LabyrinthGame(String source) {
 		BufferedReader helpReader;
 		try {
 			helpReader = new BufferedReader(new FileReader(source));

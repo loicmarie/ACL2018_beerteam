@@ -1,4 +1,4 @@
-package Develop;
+package model;
 
 
 /**
@@ -6,5 +6,5 @@ package Develop;
  *
  */
 public enum Cmd {
-	 LEFT,RIGHT,UP,DOWN,IDLE; 
+	 LEFT,RIGHT,UP,DOWN,IDLE;
 }

@@ -1,8 +1,8 @@
-package Develop;
+package application;
 
 import java.awt.event.KeyEvent;
 
-
+import model.Cmd;
 
 /**
  * @author Horatiu Cirstea, Vincent Thomas
@@ -10,7 +10,7 @@ import java.awt.event.KeyEvent;
  * controleur de type KeyListener
  *
  */
-public class HeroController implements GameController {
+public class LabyrinthController implements GameController {
 
 	/**
 	 * commande en cours
@@ -20,7 +20,7 @@ public class HeroController implements GameController {
 	/**
 	 * construction du controleur par defaut le controleur n'a pas de commande
 	 */
-	public HeroController() {
+	public LabyrinthController() {
 		this.commandeEnCours = Cmd.IDLE;
 	}
 

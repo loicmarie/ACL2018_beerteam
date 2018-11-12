@@ -1,4 +1,4 @@
-package Develop;
+package presentation;
 
 /**
  * @author Horatiu Cirstea, Vincent Thomas
@@ -10,7 +10,7 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
-import model.Hero;
+import model.Game;
 
 public class DrawingPanel extends JPanel {
 

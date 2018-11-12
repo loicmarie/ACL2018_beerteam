@@ -1,7 +1,9 @@
-package Develop;
+package presentation;
 
 import javax.swing.JFrame;
 
+import model.Game;
+import application.GameController;
 
 /**
  * @author Horatiu Cirstea, Vincent Thomas
