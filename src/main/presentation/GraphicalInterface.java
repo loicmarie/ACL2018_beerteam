@@ -16,6 +16,8 @@ public class GraphicalInterface  {
 	/**
 	 * le Panel pour l'afficheur
 	 */
+	private static final int windowWidth = 1024;
+	private static final int windowHeight = 768;
 	private DrawingPanel panel;
 	/**
 	* model

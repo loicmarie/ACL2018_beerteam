@@ -16,10 +16,16 @@ import model.Game;
 public class LabyrinthPainter implements GamePainter {
 
 	/**
+	 * la taille de l'interface
+	 */
+	protected static final int WIDTH = 1024;
+	protected static final int HEIGHT = 768;
+	/**
 	 * la taille des cases
 	 */
-	protected static final int WIDTH = 100;
-	protected static final int HEIGHT = 100;
+	protected static final int CELL_WIDTH = 50;
+	protected static final int CELL_HEIGHT = 50;
+	
 	private int x;
 	private int y;
 
@@ -37,11 +43,11 @@ public class LabyrinthPainter implements GamePainter {
 	 */
 	@Override
 	public void draw(BufferedImage im, Game game) {
-		int x = game.getHero().position.getxPos();
-		int y = game.getHero().position.getyPos();
+		int x = game.getHero().position.getxPos() * CELL_WIDTH;
+		int y = game.getHero().position.getyPos() * CELL_HEIGHT;
 		Graphics2D crayon = (Graphics2D) im.getGraphics();
 		crayon.setColor(Color.blue);
-		crayon.fillOval(x,y,10,10);
+		crayon.fillOval(x,y,CELL_WIDTH,CELL_HEIGHT);
 	}
 
 	@Override
@@ -52,6 +58,14 @@ public class LabyrinthPainter implements GamePainter {
 	@Override
 	public int getHeight() {
 		return HEIGHT;
+	}
+	
+	public int getCellWidth() {
+		return CELL_WIDTH;
+	}
+
+	public int getCellHeight() {
+		return CELL_HEIGHT;
 	}
 
 }
