@@ -1,18 +1,26 @@
 package model;
 
-public abstract class Entity{
+public abstract class Entity extends Position {
 
     public int life;
-    public Position position;
     public int strength;
 
-    public Entity(int life, Position pos, int strength){
+    public Entity(int x, int y, int life, int strength){
+    	super(x, y);
         this.life=life;
         this.strength=strength;
-        this.position=pos;
     }
 
-    public Entity(){}
+    public void move(Cmd commandeEnCours){
+    	int x = this.getX();
+    	int y = this.getY();
+    	switch(commandeEnCours) {
+    		case UP:	 this.setY(y-1); break;
+    		case RIGHT:	 this.setX(x+1); break;
+    		case DOWN:   this.setY(y+1); break;
+    		case LEFT:	 this.setX(x-1); break;
+        }
+    }
 
     public int getLife() {
         return life;
@@ -22,16 +30,8 @@ public abstract class Entity{
         return strength;
     }
 
-    public Position getPosition() {
-        return position;
-    }
-
     public void setLife(int life) {
         this.life = life;
-    }
-
-    public void setPosition(Position position) {
-        this.position = position;
     }
 
     public void setStrength(int strength) {

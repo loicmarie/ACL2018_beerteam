@@ -2,32 +2,32 @@ package model;
 
 public class Position {
 
-    public int xPos;
-    public int yPos;
+    public int x;
+    public int y;
 
-    public int getxPos() {
-        return xPos;
+    public int getX() {
+        return x;
     }
 
-    public int getyPos() {
-        return yPos;
+    public int getY() {
+        return y;
     }
 
-    public void setxPos(int xPos) {
-        this.xPos = xPos;
+    public void setX(int xPos) {
+        this.x = xPos;
     }
 
-    public void setyPos(int yPos) {
-        this.yPos = yPos;
+    public void setY(int y) {
+        this.y = y;
     }
 
     public Position(int x, int y){
-        this.xPos=x;
-        this.yPos=y;
+        this.x=x;
+        this.y=y;
     }
 
     public String toString(){
-        return "(" + Integer.toString(getxPos()) +","+ Integer.toString(getyPos()) +")";
+        return "(" + Integer.toString(x) +","+ Integer.toString(y) +")";
 
     }
 }

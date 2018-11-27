@@ -43,8 +43,8 @@ public class LabyrinthPainter implements GamePainter {
 	 */
 	@Override
 	public void draw(BufferedImage im, Game game) {
-		int x = game.getHero().position.getxPos() * CELL_WIDTH;
-		int y = game.getHero().position.getyPos() * CELL_HEIGHT;
+		int x = game.getHero().getX() * CELL_WIDTH;
+		int y = game.getHero().getY() * CELL_HEIGHT;
 		Graphics2D crayon = (Graphics2D) im.getGraphics();
 		crayon.setColor(Color.blue);
 		crayon.fillOval(x,y,CELL_WIDTH,CELL_HEIGHT);

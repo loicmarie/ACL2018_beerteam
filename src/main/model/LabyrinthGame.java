@@ -3,6 +3,7 @@ package model;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays;
 
 /**
  * @author Horatiu Cirstea, Vincent Thomas
@@ -14,6 +15,7 @@ import java.io.IOException;
 public class LabyrinthGame implements Game {
 
 	private Hero hero;
+	private boolean[][] isWall;
 	/**
 	 * constructeur avec fichier source pour le help
 	 *
@@ -32,6 +34,17 @@ public class LabyrinthGame implements Game {
 		}
 		this.hero = new Hero(1,2);
 	}
+	
+	public LabyrinthGame() {
+		int width = 10, height = 10;
+		this.isWall = new boolean[width][height];
+		for (int y = 0; y < height; y++) {
+			for (int x = 0; x < width; x++) {
+				this.isWall[y][x] = x == 0 || x == width-1 || y == 0 || y == height-1;
+			}
+		}
+		this.hero = new Hero(1,2);
+	}
 
 	/**
 	 * faire evoluer le jeu suite a une commande
@@ -42,7 +55,7 @@ public class LabyrinthGame implements Game {
 	public void evolve(Cmd commande) {
 		this.hero.move(commande);
 		System.out.println("Execute "+commande);
-		System.out.print("Votre héro est en position" + this.hero.position.toString());
+		System.out.print("Votre héro est en position" + this.hero.toString());
 	}
 
 	/**
