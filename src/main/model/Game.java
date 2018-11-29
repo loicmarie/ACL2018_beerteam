@@ -31,4 +31,11 @@ public interface Game {
 	 */
 	public void setHero(Hero hero);
 
+	/**
+	* @param x
+	* @param y
+	* @return true si il y a un mur à la position (x,y)
+	*/
+	public boolean isWall(int x, int y);
+
 }

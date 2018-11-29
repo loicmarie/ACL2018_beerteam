@@ -34,7 +34,7 @@ public class LabyrinthGame implements Game {
 		}
 		this.hero = new Hero(1,2);
 	}
-	
+
 	public LabyrinthGame() {
 		int width = 10, height = 10;
 		this.isWall = new boolean[width][height];
@@ -75,6 +75,10 @@ public class LabyrinthGame implements Game {
 	@Override
 	public void setHero(Hero hero) {
 		this.hero = hero;
+	}
+
+	public boolean isWall(int x, int y) {
+		return this.isWall[y][x];
 	}
 
 }
