@@ -55,7 +55,7 @@ public class LabyrinthGame implements Game {
 		this.hero = new Hero(1,1);
 	}
 
-	public void moveHero(Cmd commande) {
+	private void moveHero(Cmd commande) {
 		int prevX = this.hero.getX(),
 				prevY = this.hero.getY();
 		this.hero.move(commande);
@@ -70,6 +70,11 @@ public class LabyrinthGame implements Game {
 			System.out.println("Votre heros est mort !");
 			this.hero.setDead();
 		}
+	}
+
+	private void moveMonsters() {
+		for (Monster monster: this.monsters)
+			monster.move(monster.getMove(this));
 	}
 
 	/**
@@ -102,6 +107,7 @@ public class LabyrinthGame implements Game {
 	 */
 	@Override
 	public void evolve(Cmd commande) {
+		this.moveMonsters();
 		this.moveHero(commande);
 	}
 
