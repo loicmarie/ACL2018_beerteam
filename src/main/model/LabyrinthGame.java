@@ -49,6 +49,16 @@ public class LabyrinthGame implements Game {
 		this.hero = new Hero(1,2);
 	}
 
+	public void moveHero(Cmd commande) {
+		int x = this.hero.getX(),
+				y = this.hero.getY();
+		this.hero.move(commande);
+		if (this.isWall(this.hero.getX(), this.hero.getY())) {
+			this.hero.setX(x);
+			this.hero.setY(y);
+		}
+	}
+
 	/**
 	 * faire evoluer le jeu suite a une commande
 	 *
@@ -56,7 +66,7 @@ public class LabyrinthGame implements Game {
 	 */
 	@Override
 	public void evolve(Cmd commande) {
-		this.hero.move(commande);
+		this.moveHero(commande);
 	}
 
 	/**
