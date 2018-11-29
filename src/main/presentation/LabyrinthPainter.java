@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
-import model.Game;
+import model.*;
 
 
 /**
@@ -41,11 +41,17 @@ public class LabyrinthPainter implements GamePainter {
 		this.game = game;
 	}
 
-	private void drawHero(Graphics2D crayon) {
+	private void drawEntities(Graphics2D crayon) {
 		int x = this.game.getHero().getX() * CELL_WIDTH;
 		int y = this.game.getHero().getY() * CELL_HEIGHT;
 		crayon.setColor(Color.blue);
-		crayon.fillOval(x,y,CELL_WIDTH,CELL_HEIGHT);
+		crayon.fillOval(x, y, CELL_WIDTH, CELL_HEIGHT);
+		crayon.setColor(Color.red);
+		for (Monster monster: this.game.getMonsters()) {
+			int xm = monster.getX(),
+					ym = monster.getY();
+			crayon.fillOval(xm * CELL_WIDTH, ym * CELL_HEIGHT, CELL_WIDTH, CELL_HEIGHT);
+		}
 	}
 
 	private void drawCells(Graphics2D crayon) {
@@ -55,7 +61,7 @@ public class LabyrinthPainter implements GamePainter {
 					crayon.setColor(Color.green);
 					crayon.fillRect(x * CELL_WIDTH, y * CELL_HEIGHT, CELL_WIDTH, CELL_HEIGHT);
 				} else if (this.game.isWall(x,y)) {
-					crayon.setColor(Color.red);
+					crayon.setColor(Color.gray);
 					crayon.fillRect(x * CELL_WIDTH, y * CELL_HEIGHT, CELL_WIDTH, CELL_HEIGHT);
 				}
 			}
@@ -69,7 +75,7 @@ public class LabyrinthPainter implements GamePainter {
 	public void draw(BufferedImage im) {
 		Graphics2D crayon = (Graphics2D) im.getGraphics();
 		drawCells(crayon);
-		drawHero(crayon);
+		drawEntities(crayon);
 	}
 
 	@Override

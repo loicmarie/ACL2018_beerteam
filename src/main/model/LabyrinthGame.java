@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.ArrayList;
 
 /**
  * @author Horatiu Cirstea, Vincent Thomas
@@ -19,6 +20,7 @@ public class LabyrinthGame implements Game {
 	private Hero hero;
 	private Position exit;
 	private boolean[][] isWall;
+	private ArrayList<Monster> monsters;
 	/**
 	 * constructeur avec fichier source pour le help
 	 *
@@ -47,7 +49,10 @@ public class LabyrinthGame implements Game {
 			for (int x = 0; x < width; x++)
 				if (!this.isExit(x,y))
 					this.isWall[y][x] = x == 0 || x == width-1 || y == 0 || y == height-1;
-		this.hero = new Hero(1,2);
+		this.monsters = new ArrayList<Monster>();
+		this.monsters.add(new Monster(1, this.height-2));
+		this.monsters.add(new Monster(this.width-2, 1));
+		this.hero = new Hero(1,1);
 	}
 
 	public void moveHero(Cmd commande) {
@@ -111,6 +116,11 @@ public class LabyrinthGame implements Game {
 	@Override
 	public int getHeight() {
 		return this.height;
+	}
+
+	@Override
+	public ArrayList<Monster> getMonsters() {
+		return this.monsters;
 	}
 
 	public boolean isWall(int x, int y) {

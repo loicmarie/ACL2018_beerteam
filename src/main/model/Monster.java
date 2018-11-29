@@ -1,14 +1,9 @@
 package model;
 
-public class Monster {
+public class Monster extends Entity {
 
-    public boolean ghost;
-
-    public boolean isGhost() {
-        return ghost;
+    public Monster(int x, int y) {
+      super(x, y, 100000, 1);
     }
-
-    public void setGhost(boolean ghost) {
-        this.ghost = ghost;
-    }
+    
 }

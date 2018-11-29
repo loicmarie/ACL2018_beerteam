@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 /**
  * @author Horatiu Cirstea, Vincent Thomas
  *
@@ -55,5 +57,10 @@ public interface Game {
 	* @return true si il y a un mur à la position (x,y)
 	*/
 	public boolean isWall(int x, int y);
+
+	/**
+	* @return liste de monstres de la partie
+	*/
+	public ArrayList<Monster> getMonsters();
 
 }
