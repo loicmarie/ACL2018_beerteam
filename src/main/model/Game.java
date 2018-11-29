@@ -22,6 +22,13 @@ public interface Game {
 	public boolean isFinished();
 
 	/**
+	* @param x
+	* @param y
+	* @return true si la position correspond à la sortie
+	*/
+	public boolean isExit(int x, int y);
+
+	/**
 	 * @return hero de la partie
 	 */
 	public Hero getHero();

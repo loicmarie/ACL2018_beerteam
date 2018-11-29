@@ -48,12 +48,18 @@ public class LabyrinthPainter implements GamePainter {
 		crayon.fillOval(x,y,CELL_WIDTH,CELL_HEIGHT);
 	}
 
-	private void drawWalls(Graphics2D crayon) {
-		crayon.setColor(Color.red);
-		for (int y = 0; y < this.game.getHeight(); y++)
-			for (int x = 0; x < this.game.getWidth(); x++)
-				if (this.game.isWall(x,y))
+	private void drawCells(Graphics2D crayon) {
+		for (int y = 0; y < this.game.getHeight(); y++) {
+			for (int x = 0; x < this.game.getWidth(); x++) {
+				if(this.game.isExit(x,y)) {
+					crayon.setColor(Color.green);
 					crayon.fillRect(x * CELL_WIDTH, y * CELL_HEIGHT, CELL_WIDTH, CELL_HEIGHT);
+				} else if (this.game.isWall(x,y)) {
+					crayon.setColor(Color.red);
+					crayon.fillRect(x * CELL_WIDTH, y * CELL_HEIGHT, CELL_WIDTH, CELL_HEIGHT);
+				}
+			}
+		}
 	}
 
 	/**
@@ -62,7 +68,7 @@ public class LabyrinthPainter implements GamePainter {
 	@Override
 	public void draw(BufferedImage im) {
 		Graphics2D crayon = (Graphics2D) im.getGraphics();
-		drawWalls(crayon);
+		drawCells(crayon);
 		drawHero(crayon);
 	}
 
