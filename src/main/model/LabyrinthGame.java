@@ -54,8 +54,6 @@ public class LabyrinthGame implements Game {
 	@Override
 	public void evolve(Cmd commande) {
 		this.hero.move(commande);
-		System.out.println("Execute "+commande);
-		System.out.print("Votre héro est en position" + this.hero.toString());
 	}
 
 	/**
