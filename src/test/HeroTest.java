@@ -2,7 +2,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 import model.Hero;
-import model.Action;
+import model.Cmd;
 
 public class HeroTest {
 
@@ -15,52 +15,52 @@ public class HeroTest {
 
     @Test
     public void heroOnOriginPos() {
-      assertEquals(this.hero.position.getxPos(), 0);
-      assertEquals(this.hero.position.getyPos(), 0);
+      assertEquals(this.hero.getX(), 1);
+      assertEquals(this.hero.getY(), 1);
     }
 
     @Test
     public void moveUp() {
-      this.hero.move(Action.UP);
-      assertEquals(this.hero.position.getxPos(), 0);
-      assertEquals(this.hero.position.getyPos(), -1);
+      this.hero.move(Cmd.UP);
+      assertEquals(this.hero.getX(), 1);
+      assertEquals(this.hero.getY(), 0);
     }
 
     @Test
     public void moveRight() {
-      this.hero.move(Action.RIGHT);
-      assertEquals(this.hero.position.getxPos(), 1);
-      assertEquals(this.hero.position.getyPos(), 0);
+      this.hero.move(Cmd.RIGHT);
+      assertEquals(this.hero.getX(), 2);
+      assertEquals(this.hero.getY(), 1);
     }
 
     @Test
     public void moveBottom() {
-      this.hero.move(Action.BOTTOM);
-      assertEquals(this.hero.position.getxPos(), 0);
-      assertEquals(this.hero.position.getyPos(), 1);
+      this.hero.move(Cmd.DOWN);
+      assertEquals(this.hero.getX(), 1);
+      assertEquals(this.hero.getY(), 2);
     }
 
     @Test
     public void moveLeft() {
-      this.hero.move(Action.LEFT);
-      assertEquals(this.hero.position.getxPos(), -1);
-      assertEquals(this.hero.position.getyPos(), 0);
+      this.hero.move(Cmd.LEFT);
+      assertEquals(this.hero.getX(), 0);
+      assertEquals(this.hero.getY(), 1);
     }
 
     @Test
     public void moveRightTwice() {
-      this.hero.move(Action.RIGHT);
-      this.hero.move(Action.RIGHT);
-      assertEquals(this.hero.position.getxPos(), 2);
-      assertEquals(this.hero.position.getyPos(), 0);
+      this.hero.move(Cmd.RIGHT);
+      this.hero.move(Cmd.RIGHT);
+      assertEquals(this.hero.getX(), 3);
+      assertEquals(this.hero.getY(), 1);
     }
 
     @Test
     public void moveRightAndBottom() {
-      this.hero.move(Action.RIGHT);
-      this.hero.move(Action.BOTTOM);
-      assertEquals(this.hero.position.getxPos(), 1);
-      assertEquals(this.hero.position.getyPos(), 1);
+      this.hero.move(Cmd.RIGHT);
+      this.hero.move(Cmd.DOWN);
+      assertEquals(this.hero.getX(), 2);
+      assertEquals(this.hero.getY(), 2);
     }
 
 }
