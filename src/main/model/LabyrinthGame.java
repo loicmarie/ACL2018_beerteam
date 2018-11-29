@@ -18,7 +18,7 @@ public class LabyrinthGame implements Game {
 	private int width;
 	private int height;
 	private Hero hero;
-	private Position exit;
+	private Treasure treasure;
 	private boolean[][] isWall;
 	private ArrayList<Monster> monsters;
 	/**
@@ -43,11 +43,11 @@ public class LabyrinthGame implements Game {
 	public LabyrinthGame() {
 		this.width = 15;
 		this.height = 10;
-		this.exit = new Position(14, 8);
+		this.treasure = new Treasure(14, 8);
 		this.isWall = new boolean[this.height][this.width];
 		for (int y = 0; y < height; y++)
 			for (int x = 0; x < width; x++)
-				if (!this.isExit(x,y))
+				if (!this.isTreasure(x,y))
 					this.isWall[y][x] = x == 0 || x == width-1 || y == 0 || y == height-1;
 		this.monsters = new ArrayList<Monster>();
 		this.monsters.add(new Monster(1, this.height-2));
@@ -61,7 +61,7 @@ public class LabyrinthGame implements Game {
 		this.hero.move(commande);
 		int x = this.hero.getX(),
 				y = this.hero.getY();
-		if (this.isExit(x,y)) {
+		if (this.isTreasure(x,y)) {
 			System.out.println("Felicitations, vous avez gagne !");
 		} else if (this.isWall(x, y)) {
 			this.hero.setX(prevX);
@@ -83,8 +83,8 @@ public class LabyrinthGame implements Game {
 	* @return true si la position correspond à la sortie
 	*/
 	@Override
-	public boolean isExit(int x, int y) {
-		return this.exit.isOn(new Position(x,y));
+	public boolean isTreasure(int x, int y) {
+		return this.treasure.isOn(new Position(x,y));
 	}
 
 	/**
@@ -116,7 +116,7 @@ public class LabyrinthGame implements Game {
 	 */
 	@Override
 	public boolean isFinished() {
-		return this.hero.isDead() || this.isExit(this.hero.getX(), this.hero.getY());
+		return this.hero.isDead() || this.isTreasure(this.hero.getX(), this.hero.getY());
 	}
 
 	@Override

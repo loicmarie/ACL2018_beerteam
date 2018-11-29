@@ -57,7 +57,7 @@ public class LabyrinthPainter implements GamePainter {
 	private void drawCells(Graphics2D crayon) {
 		for (int y = 0; y < this.game.getHeight(); y++) {
 			for (int x = 0; x < this.game.getWidth(); x++) {
-				if(this.game.isExit(x,y)) {
+				if(this.game.isTreasure(x,y)) {
 					crayon.setColor(Color.green);
 					crayon.fillRect(x * CELL_WIDTH, y * CELL_HEIGHT, CELL_WIDTH, CELL_HEIGHT);
 				} else if (this.game.isWall(x,y)) {
