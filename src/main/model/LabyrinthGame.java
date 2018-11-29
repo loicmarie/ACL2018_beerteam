@@ -63,10 +63,12 @@ public class LabyrinthGame implements Game {
 				y = this.hero.getY();
 		if (this.isExit(x,y)) {
 			System.out.println("Felicitations, vous avez gagne !");
-			System.exit(0);
 		} else if (this.isWall(x, y)) {
 			this.hero.setX(prevX);
 			this.hero.setY(prevY);
+		} else if (this.isMonster(x, y)) {
+			System.out.println("Votre heros est mort !");
+			this.hero.setDead();
 		}
 	}
 
@@ -75,8 +77,22 @@ public class LabyrinthGame implements Game {
 	* @param y
 	* @return true si la position correspond à la sortie
 	*/
+	@Override
 	public boolean isExit(int x, int y) {
-		return this.exit.getX() == x && this.exit.getY() == y;
+		return this.exit.isOn(new Position(x,y));
+	}
+
+	/**
+	* @param x
+	* @param y
+	* @return true si la position correspond à celle d'un monstre
+	*/
+	@Override
+	public boolean isMonster(int x, int y) {
+		for (Monster monster: this.monsters)
+			if (monster.isOn(new Position(x,y)))
+				return true;
+		return false;
 	}
 
 	/**
@@ -94,8 +110,7 @@ public class LabyrinthGame implements Game {
 	 */
 	@Override
 	public boolean isFinished() {
-		// le jeu n'est jamais fini
-		return false;
+		return this.hero.isDead() || this.isExit(this.hero.getX(), this.hero.getY());
 	}
 
 	@Override

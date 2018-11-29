@@ -26,6 +26,10 @@ public class Position {
         this.y=y;
     }
 
+    public boolean isOn(Position position) {
+        return position.getX() == this.x && position.getY() == this.y;
+    }
+
     public String toString(){
         return "(" + Integer.toString(x) +","+ Integer.toString(y) +")";
 

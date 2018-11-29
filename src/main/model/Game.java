@@ -29,6 +29,13 @@ public interface Game {
 	* @return true si la position correspond à la sortie
 	*/
 	public boolean isExit(int x, int y);
+	
+	/**
+	* @param x
+	* @param y
+	* @return true si la position correspond à celle d'un monstre
+	*/
+	public boolean isMonster(int x, int y);
 
 	/**
 	 * @return hero de la partie

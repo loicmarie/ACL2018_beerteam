@@ -23,4 +23,8 @@ public abstract class Entity extends Position {
     public boolean isDead() {
       return this.isDead;
     }
+
+    public void setDead() {
+      this.isDead = true;
+    }
 }
