@@ -19,7 +19,7 @@ public interface GamePainter {
 	 * @param image
 	 *            image sur laquelle dessiner
 	 */
-	public abstract void draw(BufferedImage image, Game game);
+	public abstract void draw(BufferedImage image);
 
 	public abstract int getWidth();
 

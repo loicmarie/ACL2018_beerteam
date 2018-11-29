@@ -1,14 +1,9 @@
 package model;
 
-public class Teleporter extends Case{
-    private Position teleportPosition;
+public class Teleporter extends Position {
 
-    public Teleporter(Position position, boolean w, int tX, int tY) {
-        super(position, w);
-        position = teleportPosition;
+    public Teleporter(int x, int y, int tX, int tY) {
+        super(x, y);
     }
-
-    private Position getTeleportPosition(){
-        return teleportPosition;
-    }
+    
 }

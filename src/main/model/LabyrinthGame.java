@@ -14,6 +14,8 @@ import java.util.Arrays;
  */
 public class LabyrinthGame implements Game {
 
+	private int width;
+	private int height;
 	private Hero hero;
 	private boolean[][] isWall;
 	/**
@@ -36,8 +38,9 @@ public class LabyrinthGame implements Game {
 	}
 
 	public LabyrinthGame() {
-		int width = 10, height = 10;
-		this.isWall = new boolean[width][height];
+		this.width = 15;
+		this.height = 10;
+		this.isWall = new boolean[this.height][this.width];
 		for (int y = 0; y < height; y++) {
 			for (int x = 0; x < width; x++) {
 				this.isWall[y][x] = x == 0 || x == width-1 || y == 0 || y == height-1;
@@ -73,6 +76,16 @@ public class LabyrinthGame implements Game {
 	@Override
 	public void setHero(Hero hero) {
 		this.hero = hero;
+	}
+
+	@Override
+	public int getWidth() {
+		return this.width;
+	}
+
+	@Override
+	public int getHeight() {
+		return this.height;
 	}
 
 	public boolean isWall(int x, int y) {

@@ -32,6 +32,17 @@ public interface Game {
 	public void setHero(Hero hero);
 
 	/**
+	* @return largeur du labyrinthe
+	*/
+	public int getWidth();
+
+	/**
+	*
+	* @return hauteur du labyrinthe
+	*/
+	public int getHeight();
+
+	/**
 	* @param x
 	* @param y
 	* @return true si il y a un mur à la position (x,y)

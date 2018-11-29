@@ -72,7 +72,7 @@ public class DrawingPanel extends JPanel {
 	 */
 	public void drawGame() {
 		// generer la nouvelle image
-		this.painter.draw(this.nextImage,this.game);
+		this.painter.draw(this.nextImage);
 
 		// inverses les images doublebuffereing
 		BufferedImage temp = this.currentImage;

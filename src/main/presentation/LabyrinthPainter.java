@@ -18,16 +18,18 @@ public class LabyrinthPainter implements GamePainter {
 	/**
 	 * la taille de l'interface
 	 */
-	protected static final int WIDTH = 1024;
-	protected static final int HEIGHT = 768;
+	// protected static final int WIDTH = 1024;
+	// protected static final int HEIGHT = 768;
 	/**
 	 * la taille des cases
 	 */
 	protected static final int CELL_WIDTH = 50;
 	protected static final int CELL_HEIGHT = 50;
 
-	private int x;
-	private int y;
+	/**
+	* jeu à afficher
+	*/
+	private Game game;
 
 	/**
 	 * appelle constructeur parent
@@ -35,21 +37,22 @@ public class LabyrinthPainter implements GamePainter {
 	 * @param game
 	 *            le jeu est a afficher
 	 */
-	public LabyrinthPainter() {
+	public LabyrinthPainter(Game game) {
+		this.game = game;
 	}
 
-	private void drawHero(Graphics2D crayon, Game game) {
-		int x = game.getHero().getX() * CELL_WIDTH;
-		int y = game.getHero().getY() * CELL_HEIGHT;
+	private void drawHero(Graphics2D crayon) {
+		int x = this.game.getHero().getX() * CELL_WIDTH;
+		int y = this.game.getHero().getY() * CELL_HEIGHT;
 		crayon.setColor(Color.blue);
 		crayon.fillOval(x,y,CELL_WIDTH,CELL_HEIGHT);
 	}
 
-	private void drawWalls(Graphics2D crayon, Game game) {
+	private void drawWalls(Graphics2D crayon) {
 		crayon.setColor(Color.red);
-		for (int y = 0; y < 10; y++)
-			for (int x = 0; x < 10; x++)
-				if (game.isWall(x,y))
+		for (int y = 0; y < this.game.getHeight(); y++)
+			for (int x = 0; x < this.game.getWidth(); x++)
+				if (this.game.isWall(x,y))
 					crayon.fillRect(x * CELL_WIDTH, y * CELL_HEIGHT, CELL_WIDTH, CELL_HEIGHT);
 	}
 
@@ -57,20 +60,20 @@ public class LabyrinthPainter implements GamePainter {
 	 * methode  redefinie de Afficheur retourne une image du jeu
 	 */
 	@Override
-	public void draw(BufferedImage im, Game game) {
+	public void draw(BufferedImage im) {
 		Graphics2D crayon = (Graphics2D) im.getGraphics();
-		drawWalls(crayon, game);
-		drawHero(crayon, game);
+		drawWalls(crayon);
+		drawHero(crayon);
 	}
 
 	@Override
 	public int getWidth() {
-		return WIDTH;
+		return this.game.getWidth() * CELL_WIDTH;
 	}
 
 	@Override
 	public int getHeight() {
-		return HEIGHT;
+		return this.game.getHeight() * CELL_HEIGHT;
 	}
 
 	public int getCellWidth() {

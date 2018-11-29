@@ -1,10 +1,10 @@
 package model;
 
-public class Trap extends Case {
+public class Trap extends Position {
     private int damage;
 
-    public Trap(Position pos, boolean w, int d) {
-        super(pos, w);
+    public Trap(int x, int y, int d) {
+        super(x, y);
         damage = d;
     }
 

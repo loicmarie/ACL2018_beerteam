@@ -1,14 +1,16 @@
 package model;
 
-public class Magic extends Case{
+public class Magic extends Position {
+
     private int effect;
 
-    public Magic(Position position, boolean w, int e) {
-        super(position, w);
+    public Magic(int x, int y, int e) {
+        super(x, y);
         effect = e;
     }
 
     public int getEffect(){
         return effect;
     }
+    
 }
