@@ -20,6 +20,7 @@ public class LabyrinthGame implements Game {
 	private Hero hero;
 	private Treasure treasure;
 	private boolean[][] isWall;
+	private boolean[][] isTrap;
 	private ArrayList<Monster> monsters;
 	/**
 	 * constructeur avec fichier source pour le help
@@ -49,6 +50,9 @@ public class LabyrinthGame implements Game {
 			for (int x = 0; x < width; x++)
 				if (!this.isTreasure(x,y))
 					this.isWall[y][x] = x == 0 || x == width-1 || y == 0 || y == height-1;
+		this.isTrap = new boolean[this.height][this.width];
+		this.isTrap[2][0] = true;
+		this.isTrap[0][2] = true;
 		this.monsters = new ArrayList<Monster>();
 		this.monsters.add(new Monster(1, this.height-2));
 		this.monsters.add(new Monster(this.width-2, 1));
