@@ -13,10 +13,10 @@ public class Monster extends Entity {
       int x = this.getX(),
           y = this.getY();
       ArrayList<Cmd> cmds = new ArrayList<Cmd>();
-      if (!game.isWall(x, y-1) && !game.isTrap(x, y-1) && !game.isTeleporter(x, y-1)) cmds.add(Cmd.UP);
-      if (!game.isWall(x+1, y) && !game.isTrap(x+1, y) && !game.isTeleporter(x+1, y)) cmds.add(Cmd.RIGHT);
-      if (!game.isWall(x, y+1) && !game.isTrap(x, y+1) && !game.isTeleporter(x, y+1)) cmds.add(Cmd.DOWN);
-      if (!game.isWall(x-1, y) && !game.isTrap(x-1, y) && !game.isTeleporter(x-1, y)) cmds.add(Cmd.LEFT);
+      if (!game.isMonster(x, y-1) && !game.isWall(x, y-1) && !game.isTrap(x, y-1) && !game.isTeleporter(x, y-1)) cmds.add(Cmd.UP);
+      if (!game.isMonster(x+1, y) && !game.isWall(x+1, y) && !game.isTrap(x+1, y) && !game.isTeleporter(x+1, y)) cmds.add(Cmd.RIGHT);
+      if (!game.isMonster(x, y+1) && !game.isWall(x, y+1) && !game.isTrap(x, y+1) && !game.isTeleporter(x, y+1)) cmds.add(Cmd.DOWN);
+      if (!game.isMonster(x-1, y) && !game.isWall(x-1, y) && !game.isTrap(x-1, y) && !game.isTeleporter(x-1, y)) cmds.add(Cmd.LEFT);
       Random randomGenerator = new Random();
       int index = randomGenerator.nextInt(cmds.size());
       return cmds.get(index);
