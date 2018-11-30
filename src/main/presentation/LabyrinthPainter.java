@@ -46,10 +46,10 @@ public class LabyrinthPainter implements GamePainter {
 		int y = this.game.getHero().getY() * CELL_HEIGHT;
 		crayon.setColor(Color.blue);
 		crayon.fillOval(x, y, CELL_WIDTH, CELL_HEIGHT);
-		crayon.setColor(Color.red);
 		for (Monster monster: this.game.getMonsters()) {
 			int xm = monster.getX(),
 					ym = monster.getY();
+			crayon.setColor(monster instanceof Ghost ? Color.lightGray : Color.red);
 			crayon.fillOval(xm * CELL_WIDTH, ym * CELL_HEIGHT, CELL_WIDTH, CELL_HEIGHT);
 		}
 	}
