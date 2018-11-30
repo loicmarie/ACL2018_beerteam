@@ -53,6 +53,10 @@ public class LabyrinthGame implements Game {
 			for (int x = 0; x < width; x++)
 				if (!this.isTreasure(x,y))
 					this.isWall[y][x] = x == 0 || x == width-1 || y == 0 || y == height-1;
+		this.isWall[4][7] = true;
+		this.isWall[5][7] = true;
+		this.isWall[4][8] = true;
+		this.isWall[5][8] = true;
 		// Traps
 		this.isTrap = new boolean[this.height][this.width];
 		this.isTrap[1][7] = true;
@@ -69,6 +73,7 @@ public class LabyrinthGame implements Game {
 		this.monsters = new ArrayList<Monster>();
 		this.monsters.add(new Monster(1, this.height-2));
 		this.monsters.add(new Monster(this.width-2, 1));
+		this.monsters.add(new Ghost((int)this.width/2, (int)this.height/2));
 		// Hero
 		this.hero = new Hero(1,1);
 	}
@@ -96,8 +101,14 @@ public class LabyrinthGame implements Game {
 	}
 
 	private void moveMonsters() {
-		for (Monster monster: this.monsters)
-			monster.move(monster.getMove(this));
+		Cmd cmd;
+		for (Monster monster: this.monsters) {
+			if (monster instanceof Ghost)
+				cmd = ((Ghost)monster).getMove(this);
+			else
+				cmd = monster.getMove(this);
+			monster.move(cmd);
+		}
 	}
 
 	/**
