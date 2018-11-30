@@ -73,6 +73,13 @@ public interface Game {
 	public boolean isTrap(int x, int y);
 
 	/**
+	* @param x
+	* @param y
+	* @return true si il y a un teleporteur à la position (x,y)
+	*/
+	public boolean isTeleporter(int x, int y);
+
+	/**
 	* @return liste de monstres de la partie
 	*/
 	public ArrayList<Monster> getMonsters();

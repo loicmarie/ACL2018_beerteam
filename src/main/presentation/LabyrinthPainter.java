@@ -63,6 +63,9 @@ public class LabyrinthPainter implements GamePainter {
 				} else if (this.game.isTrap(x,y)) {
 					crayon.setColor(Color.black);
 					crayon.fillRect(x * CELL_WIDTH, y * CELL_HEIGHT, CELL_WIDTH, CELL_HEIGHT);
+				} else if (this.game.isTeleporter(x,y)) {
+					crayon.setColor(Color.yellow);
+					crayon.fillRect(x * CELL_WIDTH, y * CELL_HEIGHT, CELL_WIDTH, CELL_HEIGHT);
 				} else if (this.game.isWall(x,y)) {
 					crayon.setColor(Color.gray);
 					crayon.fillRect(x * CELL_WIDTH, y * CELL_HEIGHT, CELL_WIDTH, CELL_HEIGHT);

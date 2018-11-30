@@ -175,6 +175,16 @@ public class LabyrinthGame implements Game {
 	/**
 	* @param x
 	* @param y
+	* @return true si il y a un teleporteur à la position (x,y)
+	*/
+	@Override
+	public boolean isTeleporter(int x, int y) {
+		return this.teleporters[y][x] != null;
+	}
+
+	/**
+	* @param x
+	* @param y
 	* @return true si il y a un piege à la position (x,y)
 	*/
 	@Override
