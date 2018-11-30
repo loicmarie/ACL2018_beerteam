@@ -81,6 +81,11 @@ public class LabyrinthGame implements Game {
 				y = this.hero.getY();
 		if (this.isTreasure(x,y)) {
 			System.out.println("Felicitations, vous avez gagne !");
+		} else if (this.isTeleporter(x, y)) {
+			Teleporter tp = this.getTeleporter(x, y);
+			Position nextPos = tp.getNextPosition();
+			this.hero.setX(nextPos.x);
+			this.hero.setY(nextPos.y);
 		} else if (this.isWall(x, y)) {
 			this.hero.setX(prevX);
 			this.hero.setY(prevY);
@@ -180,6 +185,16 @@ public class LabyrinthGame implements Game {
 	@Override
 	public boolean isTeleporter(int x, int y) {
 		return this.teleporters[y][x] != null;
+	}
+
+	/**
+	* @param x
+	* @param y
+	* @return teleporteur à la position (x,y)
+	*/
+	@Override
+	public Teleporter getTeleporter(int x, int y) {
+		return this.teleporters[y][x];
 	}
 
 	/**

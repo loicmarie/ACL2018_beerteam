@@ -80,6 +80,13 @@ public interface Game {
 	public boolean isTeleporter(int x, int y);
 
 	/**
+	* @param x
+	* @param y
+	* @return teleporteur à la position (x,y)
+	*/
+	public Teleporter getTeleporter(int x, int y);
+
+	/**
 	* @return liste de monstres de la partie
 	*/
 	public ArrayList<Monster> getMonsters();
