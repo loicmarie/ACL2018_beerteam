@@ -21,6 +21,7 @@ public class LabyrinthGame implements Game {
 	private Treasure treasure;
 	private boolean[][] isWall;
 	private boolean[][] isTrap;
+	private Teleporter[][] teleporters;
 	private ArrayList<Monster> monsters;
 	/**
 	 * constructeur avec fichier source pour le help
@@ -58,6 +59,12 @@ public class LabyrinthGame implements Game {
 		this.isTrap[1][8] = true;
 		this.isTrap[8][7] = true;
 		this.isTrap[8][8] = true;
+		// Teleporters
+		this.teleporters = new Teleporter[this.height][this.width];
+		this.teleporters[1][6] = new Teleporter(6, 1, 9, 1);
+		this.teleporters[1][9] = new Teleporter(9, 1, 6, 1);
+		this.teleporters[8][6] = new Teleporter(6, 8, 9, 8);
+		this.teleporters[8][9] = new Teleporter(9, 8, 6, 8);
 		// Monsters
 		this.monsters = new ArrayList<Monster>();
 		this.monsters.add(new Monster(1, this.height-2));
