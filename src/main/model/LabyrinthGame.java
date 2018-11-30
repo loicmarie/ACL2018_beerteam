@@ -77,7 +77,7 @@ public class LabyrinthGame implements Game {
 		} else if (this.isWall(x, y)) {
 			this.hero.setX(prevX);
 			this.hero.setY(prevY);
-		} else if (this.isMonster(x, y)) {
+		} else if (this.isMonster(x, y) || this.isTrap(x, y)) {
 			System.out.println("Votre heros est mort !");
 			this.hero.setDead();
 		}
