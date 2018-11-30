@@ -17,9 +17,39 @@ public class Ghost extends Monster {
       if (!game.isMonster(x+1, y) && !game.isTrap(x+1, y) && !game.isTeleporter(x+1, y) && x < game.getWidth()-2) cmds.add(Cmd.RIGHT);
       if (!game.isMonster(x, y+1) && !game.isTrap(x, y+1) && !game.isTeleporter(x, y+1) && y < game.getHeight()-2) cmds.add(Cmd.DOWN);
       if (!game.isMonster(x-1, y) && !game.isTrap(x-1, y) && !game.isTeleporter(x-1, y) && x > 0) cmds.add(Cmd.LEFT);
+
+      Hero hero = game.getHero();
+      ArrayList<Cmd> bestCmds = new ArrayList<Cmd>();
+      for (Cmd cmd: cmds) {
+        switch (cmd) {
+          case UP:
+            if (Math.abs((y-1)-hero.getY()) < Math.abs(y-hero.getY()))
+              bestCmds.add(cmd);
+            break;
+          case DOWN:
+            if (Math.abs((y+1)-hero.getY()) < Math.abs(y-hero.getY()))
+              bestCmds.add(cmd);
+            break;
+          case LEFT:
+            if (Math.abs((x-1)-hero.getX()) < Math.abs(x-hero.getX()))
+              bestCmds.add(cmd);
+            break;
+          case RIGHT:
+            if (Math.abs((x+1)-hero.getX()) < Math.abs(x-hero.getX()))
+              bestCmds.add(cmd);
+            break;
+        }
+      }
       Random randomGenerator = new Random();
-      int index = randomGenerator.nextInt(cmds.size());
-      return cmds.get(index);
+      Cmd cmd;
+      if (bestCmds.size() == 0) {
+        int index = randomGenerator.nextInt(cmds.size());
+        cmd = cmds.get(index);
+      } else {
+        int index = randomGenerator.nextInt(bestCmds.size());
+        cmd = bestCmds.get(index);
+      }
+      return cmd;
     }
 
 }
