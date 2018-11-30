@@ -44,18 +44,25 @@ public class LabyrinthGame implements Game {
 	public LabyrinthGame() {
 		this.width = 15;
 		this.height = 10;
+		// Treasure
 		this.treasure = new Treasure(14, 8);
+		// Walls
 		this.isWall = new boolean[this.height][this.width];
 		for (int y = 0; y < height; y++)
 			for (int x = 0; x < width; x++)
 				if (!this.isTreasure(x,y))
 					this.isWall[y][x] = x == 0 || x == width-1 || y == 0 || y == height-1;
+		// Traps
 		this.isTrap = new boolean[this.height][this.width];
-		this.isTrap[2][0] = true;
-		this.isTrap[0][2] = true;
+		this.isTrap[1][7] = true;
+		this.isTrap[1][8] = true;
+		this.isTrap[8][7] = true;
+		this.isTrap[8][8] = true;
+		// Monsters
 		this.monsters = new ArrayList<Monster>();
 		this.monsters.add(new Monster(1, this.height-2));
 		this.monsters.add(new Monster(this.width-2, 1));
+		// Hero
 		this.hero = new Hero(1,1);
 	}
 
@@ -148,8 +155,24 @@ public class LabyrinthGame implements Game {
 		return this.monsters;
 	}
 
+	/**
+	* @param x
+	* @param y
+	* @return true si il y a un mur à la position (x,y)
+	*/
+	@Override
 	public boolean isWall(int x, int y) {
 		return this.isWall[y][x];
+	}
+
+	/**
+	* @param x
+	* @param y
+	* @return true si il y a un piege à la position (x,y)
+	*/
+	@Override
+	public boolean isTrap(int x, int y) {
+		return this.isTrap[y][x];
 	}
 
 }

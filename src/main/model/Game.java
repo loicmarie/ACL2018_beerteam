@@ -66,6 +66,13 @@ public interface Game {
 	public boolean isWall(int x, int y);
 
 	/**
+	* @param x
+	* @param y
+	* @return true si il y a un piege à la position (x,y)
+	*/
+	public boolean isTrap(int x, int y);
+
+	/**
 	* @return liste de monstres de la partie
 	*/
 	public ArrayList<Monster> getMonsters();
