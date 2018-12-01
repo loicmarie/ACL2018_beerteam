@@ -32,50 +32,49 @@ public class LabyrinthGame implements Game {
 			InputStreamReader isr = new InputStreamReader(is);
 			helpReader = new BufferedReader(isr);
 			String ligne;
+			int y = -1;
+			int nbTeleporters = 0;
 			while ((ligne = helpReader.readLine()) != null) {
-				System.out.println(ligne);
+				if (y == -1) {
+					String[] splited = ligne.split("\\s+");
+					this.width = Integer.parseInt(splited[0]);
+					this.height = Integer.parseInt(splited[1]);
+					this.isWall = new boolean[this.height][this.width];
+					this.isTrap = new boolean[this.height][this.width];
+					this.teleporters = new Teleporter[this.height][this.width];
+					this.monsters = new ArrayList<Monster>();
+				} else if (y == this.height) {
+					nbTeleporters = Integer.parseInt(ligne);
+				} else if (y > this.height) {
+					String[] splited = ligne.split("\\s+");
+					int tx = Integer.parseInt(splited[0]);
+					int ty = Integer.parseInt(splited[1]);
+					int ntx = Integer.parseInt(splited[2]);
+					int nty = Integer.parseInt(splited[3]);
+					this.teleporters[ty][tx] = new Teleporter(tx, ty, ntx, nty);
+				} else {
+					for (int x = 0; x < ligne.length(); x++) {
+						switch(ligne.charAt(x)) {
+							case '#': this.isWall[y][x] = true; break;
+							case 'E': this.treasure = new Treasure(x, y); break;
+							case 'H': this.hero = new Hero(x, y); break;
+							case 'M': this.monsters.add(new Monster(x, y)); break;
+							case 'G': this.monsters.add(new Ghost(x, y)); break;
+							case 'T': this.isTrap[y][x] = true; break;
+						}
+					}
+					System.out.println(ligne);
+				}
+				y++;
 			}
 			helpReader.close();
 		} catch (IOException e) {
 			System.out.println("Help not available");
 		}
-		this.hero = new Hero(1,2);
 	}
 
 	public LabyrinthGame() {
-		this.width = 15;
-		this.height = 10;
-		// Treasure
-		this.treasure = new Treasure(14, 8);
-		// Walls
-		this.isWall = new boolean[this.height][this.width];
-		for (int y = 0; y < height; y++)
-			for (int x = 0; x < width; x++)
-				if (!this.isTreasure(x,y))
-					this.isWall[y][x] = x == 0 || x == width-1 || y == 0 || y == height-1;
-		this.isWall[4][7] = true;
-		this.isWall[5][7] = true;
-		this.isWall[4][8] = true;
-		this.isWall[5][8] = true;
-		// Traps
-		this.isTrap = new boolean[this.height][this.width];
-		this.isTrap[1][7] = true;
-		this.isTrap[1][8] = true;
-		this.isTrap[8][7] = true;
-		this.isTrap[8][8] = true;
-		// Teleporters
-		this.teleporters = new Teleporter[this.height][this.width];
-		this.teleporters[1][6] = new Teleporter(6, 1, 9, 1);
-		this.teleporters[1][9] = new Teleporter(9, 1, 6, 1);
-		this.teleporters[8][6] = new Teleporter(6, 8, 9, 8);
-		this.teleporters[8][9] = new Teleporter(9, 8, 6, 8);
-		// Monsters
-		this.monsters = new ArrayList<Monster>();
-		this.monsters.add(new Monster(1, this.height-2));
-		this.monsters.add(new Monster(this.width-2, 1));
-		this.monsters.add(new Ghost((int)this.width/2, (int)this.height/2));
-		// Hero
-		this.hero = new Hero(1,1);
+		this("resources/lvl1.txt");
 	}
 
 	private void moveHero(Cmd commande) {

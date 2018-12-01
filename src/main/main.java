@@ -10,7 +10,7 @@ public class main {
     public static void main(String[] args)throws InterruptedException{
 
      		// creation du jeu particulier et de son afficheur
-     		LabyrinthGame game = new LabyrinthGame("resources/lvl1.txt");
+     		LabyrinthGame game = new LabyrinthGame();
      		LabyrinthPainter painter = new LabyrinthPainter(game);
      		LabyrinthController controller = new LabyrinthController();
 
