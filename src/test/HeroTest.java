@@ -1,66 +1,65 @@
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
-import model.Hero;
-import model.Cmd;
+import model.*;
 
 public class HeroTest {
 
-    private Hero hero;
+    private Game game;
 
     @Before
     public void createHero() {
-      this.hero = new Hero(1, 1);
+      this.game = new LabyrinthGame("resources/test/test1.txt");
     }
 
     @Test
     public void heroOnOriginPos() {
-      assertEquals(this.hero.getX(), 1);
-      assertEquals(this.hero.getY(), 1);
+      assertEquals(this.game.getHero().getX(), 3);
+      assertEquals(this.game.getHero().getY(), 3);
     }
 
     @Test
     public void moveUp() {
-      this.hero.move(Cmd.UP);
-      assertEquals(this.hero.getX(), 1);
-      assertEquals(this.hero.getY(), 0);
+      this.game.evolve(Cmd.UP);
+      assertEquals(this.game.getHero().getX(), 3);
+      assertEquals(this.game.getHero().getY(), 2);
     }
 
     @Test
     public void moveRight() {
-      this.hero.move(Cmd.RIGHT);
-      assertEquals(this.hero.getX(), 2);
-      assertEquals(this.hero.getY(), 1);
+      this.game.evolve(Cmd.RIGHT);
+      assertEquals(this.game.getHero().getX(), 4);
+      assertEquals(this.game.getHero().getY(), 3);
     }
 
     @Test
     public void moveBottom() {
-      this.hero.move(Cmd.DOWN);
-      assertEquals(this.hero.getX(), 1);
-      assertEquals(this.hero.getY(), 2);
+      this.game.evolve(Cmd.DOWN);
+      assertEquals(this.game.getHero().getX(), 3);
+      assertEquals(this.game.getHero().getY(), 4);
     }
 
     @Test
     public void moveLeft() {
-      this.hero.move(Cmd.LEFT);
-      assertEquals(this.hero.getX(), 0);
-      assertEquals(this.hero.getY(), 1);
+      this.game.evolve(Cmd.LEFT);
+      assertEquals(this.game.getHero().getX(), 2);
+      assertEquals(this.game.getHero().getY(), 3);
     }
 
     @Test
     public void moveRightTwice() {
-      this.hero.move(Cmd.RIGHT);
-      this.hero.move(Cmd.RIGHT);
-      assertEquals(this.hero.getX(), 3);
-      assertEquals(this.hero.getY(), 1);
+      this.game.evolve(Cmd.RIGHT);
+      this.game.evolve(Cmd.RIGHT);
+      assertEquals(this.game.getHero().getX(), 5);
+      assertEquals(this.game.getHero().getY(), 3);
     }
 
     @Test
     public void moveRightAndBottom() {
-      this.hero.move(Cmd.RIGHT);
-      this.hero.move(Cmd.DOWN);
-      assertEquals(this.hero.getX(), 2);
-      assertEquals(this.hero.getY(), 2);
+      this.game.evolve(Cmd.RIGHT);
+      this.game.evolve(Cmd.DOWN);
+      assertEquals(this.game.getHero().getX(), 4);
+      assertEquals(this.game.getHero().getY(), 4);
     }
 
 }

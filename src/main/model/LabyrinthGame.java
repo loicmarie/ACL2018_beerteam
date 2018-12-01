@@ -63,7 +63,6 @@ public class LabyrinthGame implements Game {
 							case 'T': this.isTrap[y][x] = true; break;
 						}
 					}
-					System.out.println(ligne);
 				}
 				y++;
 			}
