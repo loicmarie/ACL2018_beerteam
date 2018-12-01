@@ -14,9 +14,17 @@
     <pathelement location="${main.bin.dir}"/>
   </path>
 
+  <target name="clean">
+  	<delete dir="bin"/>
+  	<delete dir="exe"/>
+  </target>
+
   <target name="compile">
     <mkdir dir="${main.bin.dir}"/>
     <javac srcdir="${main.src.dir}" destdir="${main.bin.dir}" includeantruntime="false"/>
+    <copy todir="${main.bin.dir}/model/resources">
+      <fileset dir="${main.src.dir}/model/resources"/>
+    </copy>
   </target>
 
 	<target name="jar">
@@ -25,6 +33,7 @@
 			<manifest>
 				<attribute name="Main-Class" value="main"/>
 			</manifest>
+      <fileset dir="${main.src.dir}/model/resources"/>
 		</jar>
 	</target>
 

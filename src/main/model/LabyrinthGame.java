@@ -1,8 +1,6 @@
 package model;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.Arrays;
 import java.util.ArrayList;
 
@@ -30,7 +28,9 @@ public class LabyrinthGame implements Game {
 	public LabyrinthGame(String source) {
 		BufferedReader helpReader;
 		try {
-			helpReader = new BufferedReader(new FileReader(source));
+			InputStream is = getClass().getResourceAsStream(source);
+			InputStreamReader isr = new InputStreamReader(is);
+			helpReader = new BufferedReader(isr);
 			String ligne;
 			while ((ligne = helpReader.readLine()) != null) {
 				System.out.println(ligne);
