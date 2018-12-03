@@ -31,6 +31,11 @@ public interface Game {
 	public boolean isTreasure(int x, int y);
 
 	/**
+	* @return le trésor
+	*/
+	public Treasure getTreasure();
+
+	/**
 	* @param x
 	* @param y
 	* @return true si la position correspond à celle d'un monstre

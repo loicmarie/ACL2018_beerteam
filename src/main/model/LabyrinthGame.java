@@ -120,6 +120,14 @@ public class LabyrinthGame implements Game {
 	}
 
 	/**
+	* @return le trésor
+	*/
+	@Override
+	public Treasure getTreasure() {
+		return this.treasure;
+	}
+
+	/**
 	* @param x
 	* @param y
 	* @return true si la position correspond à celle d'un monstre

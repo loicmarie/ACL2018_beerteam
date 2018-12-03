@@ -1,6 +1,7 @@
 package presentation;
 
 import java.awt.image.BufferedImage;
+import javax.swing.JPanel;
 
 import model.Game;
 
@@ -19,7 +20,7 @@ public interface GamePainter {
 	 * @param image
 	 *            image sur laquelle dessiner
 	 */
-	public abstract void draw(BufferedImage image);
+	public abstract void draw(JPanel panel, BufferedImage image);
 
 	public abstract int getWidth();
 

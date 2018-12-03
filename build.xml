@@ -25,6 +25,9 @@
     <copy todir="${main.bin.dir}/model/resources">
       <fileset dir="${main.src.dir}/model/resources"/>
     </copy>
+    <copy todir="${main.bin.dir}/presentation/resources">
+      <fileset dir="${main.src.dir}/presentation/resources"/>
+    </copy>
   </target>
 
 	<target name="jar">
