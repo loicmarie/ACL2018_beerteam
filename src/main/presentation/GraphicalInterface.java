@@ -19,6 +19,7 @@ public class GraphicalInterface  {
 	private static final int windowWidth = 1024;
 	private static final int windowHeight = 768;
 	private DrawingPanel panel;
+	private JFrame f;
 	/**
 	* model
 	*/
@@ -33,7 +34,7 @@ public class GraphicalInterface  {
 	 *
 	 */
 	public GraphicalInterface(GamePainter gamePainter, GameController gameController, Game game){
-		JFrame f=new JFrame();
+		f=new JFrame();
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		// attacher le panel contenant l'afficheur du game
@@ -56,6 +57,12 @@ public class GraphicalInterface  {
 	 */
 	public void paint() {
 		this.panel.drawGame();
+	}
+
+	public void reset() {
+		this.panel.removeAll();
+		this.panel.revalidate();
+		this.f.dispose();
 	}
 
 }
