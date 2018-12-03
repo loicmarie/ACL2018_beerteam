@@ -1,90 +1,140 @@
 @startuml
+left to right direction
+skinparam packageStyle rectangle
+actor Joueur
+rectangle "Jeu du labyrinthe" {
+  Joueur -- (Bouger heros)
+  Joueur -- (Arrêter la partie)
+  (Bouger heros) .> (Lancer une partie) : include
+}
+@enduml
 
+@startuml
+actor Joueur
+participant Système
+Joueur -> Système: Démarrer le programme
+Système --> Joueur: Lancer une partie
+loop Tant que partie en cours
+  Joueur -> Système: Bouger héros
+  break Héros sur trésor ou sur monstre
+    alt Héros sur monstre
+      Système --> Joueur: Afficher message "Perdu"
+    else Héros sur trésor
+      Système --> Joueur: Afficher message "Gagné"
+    end
+  end
+end
+Système --> Joueur: Finir partie
+Système --> Joueur: Terminer programme
+@enduml
+
+
+@startuml
+
+page 2x2
 title Balade dans un labyrinthe
 
 package "model" #DDDDDD {
 
+    class Position {
+        -x: int
+        -y: int
+        --
+        +isOn(Position position): boolean
+        +toString(): string
+    }
+
     interface Game {
         +evolve(Cmd userCmd)
         +isFinished(): boolean
+        +isTreasure(int x, int y): boolean
+        +isMonster(int x, int y): boolean
         +getHero(): Hero
         +setHero(Hero hero)
+        +getWidth(): int
+        +getHeight(): int
+        +isWall(int x, int y): boolean
+        +isTrap(int x, int y): boolean
+        +isTeleporter(int x, int y): boolean
+        +getTeleporter(int x, int y): Teleporter
+        +getMonsters(): Monster[]
     }
 
     class LabyrinthGame {
-        -Hero hero
+        -width: int
+        -height: int
+        -hero: Hero
+        -treasure: Treasure
+        -isWall: boolean[][]
+        -isTrap: boolean[][]
+        -teleporters: Teleporter[][]
+        -monsters: Monster[]
         --
         +evolve(Cmd userCmd)
         +isFinished(): boolean
+        +isTreasure(int x, int y): boolean
+        +isMonster(int x, int y): boolean
         +getHero(): Hero
         +setHero(Hero hero)
+        +getWidth(): int
+        +getHeight(): int
+        +isWall(int x, int y): boolean
+        +isTrap(int x, int y): boolean
+        +isTeleporter(int x, int y): boolean
+        +getTeleporter(int x, int y): Teleporter
+        +getMonsters(): Monster[]
+        -moveHero(Cmd commande)
+        -moveMonsters()
     }
 
     Game <|.. LabyrinthGame
-    LabyrinthGame "0" -- "1" Hero : hero
 
-    class Entite {
-        -int vie
-        -int posX
-        -int posY
-        -int degat
+    class Entity {
+        -isDead: boolean
+        --
+        +move(Cmd commandeEnCours)
+        +isDead(): boolean
+        +setDead()
     }
+
+    Position <|-- Entity
 
     class Hero {
 
     }
 
-    class Monstre {
-        -bool fantome
+    Entity <|-- Hero
+    LabyrinthGame "1" -- "1" Hero
+
+    class Monster {
+        +getMove(Game game): Cmd
     }
 
-    Entite <|-- Hero
-    Entite <|-- Monstre
+    Entity <|-- Monster
+    LabyrinthGame "1" -- "0..*" Monstre
 
-    class LabyrintheGame {
+    class Ghost {
+        +getMove(Game game): Cmd
     }
 
-    LabyrintheGame "1" -- "1" Hero
-    LabyrintheGame "1" -- "0..*" Monstre
+    Entity <|-- Ghost
 
-    class Niveau {
-        -String fichier
-    }
-
-    LabyrintheGame "1" -- "1" Niveau
-
-    class Case {
-        -int x
-        -int y
-        -bool mur
-    }
-
-    LabyrintheGame "1" -- "1..*" Case
-
-    class Tresor {
-    }
-
-    class Piege {
-        -int degat
-    }
-
-    class Magique {
-        -int effet
-    }
-
-    class Passage {
-        -int arriveeX
-        -int arriveeY
-    }
-
-    class Cmd {
+    class Treasure {
 
     }
 
-    Case <|-- Tresor
-    Case <|-- Piege
-    Case <|-- Magique
-    Case <|-- Passage
+    Position <|-- Treasure
+    LabyrinthGame "1" -- "1" Treasure
+
+    class Teleporter {
+        -tX: int
+        -tY: int
+        --
+        +getNextPosition(): Position
+    }
+
+    Position <|-- Teleporter
+
 }
 
 package "presentation" #DDDDDD {
@@ -134,6 +184,10 @@ LabyrinthPainter ..|> GamePainter
 
 package "application" #DDDDDD {
 
+    enum Cmd {
+
+    }
+
     interface GameController {
         -Cmd commandeEnCours
         --
@@ -159,8 +213,6 @@ package "application" #DDDDDD {
     }
 
 }
-
-KeyListener <|-- GameController
 
 GameController <|.. LabyrinthController
 

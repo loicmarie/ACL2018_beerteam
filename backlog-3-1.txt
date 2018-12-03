@@ -1,0 +1,22 @@
+BACKLOG
+
+v1.0:
+- Permettre à l'utilisateur de bouger son personnage dans les quatre directions à l'aide d'entrées au clavier.
+- Permettre à l'utilisateur de connaître la position de son personnage après chaque mouvement.
+
+v2.0:
+- Permettre à l'utilisateur d'afficher graphiquement son personnage à l'aide de figures géométriques.
+- Permettre à l'utilisateur de déplacer graphiquement son personnage.
+
+v3.0:
+- Transformer le labyrinthe en grille 2D composée de cases
+- Implémenter et afficher les murs
+- Gérer les collisions héro/mur
+- Implémenter et afficher la case trésor
+- Gérer les collisions héro/trésor
+- Implémenter, afficher et déplacer les monstres
+- Gérer les collisions héro/monstres (mort)
+- Implémenter, afficher et déplacer les fantômes
+- Générer labyrinthe à partir de fichier texte
+- Implémenter, afficher et déplacer les téléporteurs
+- Gérer les collisions héro/téléporteur (téléportation)

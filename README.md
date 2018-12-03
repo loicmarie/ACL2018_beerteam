@@ -3,7 +3,7 @@
 ## Compilation et exécution
 
 A la racine du projet:
-`ant compile jar run`
+`ant clean compile jar run`
 
 ## Tests
 
@@ -43,4 +43,20 @@ A la racine du projet:
   - Convertir la carte du labyrinthe en grille 2D et modifier les déplacements en conséquence
 	- Mise en place des cases mur / trésor / pièges / magiques / passages
 	- Intégration des collisions du héro pour chaque type de case
+	- Génération du labyrinthe depuis fichier texte
+	- Mise à jour des diagrammes
+
+#### Répartition des tâches
+	- Convertir la carte du labyrinthe en grille 2D: Loïc
+	- Mise en place des cases mur / trésor / pièges / magiques / passages: Loïc, Louise, Léo
+	- Intégration des collisions du héro pour chaque type de case: Loïc, Louise
+	- Génération du labyrinthe depuis fichier texte: Loïc
+	- Mise à jour des diagrammes: Louise
+
+### Sprint 4:
+
+#### Objectifs:
+	- Version avec sprites
+	- Permettre à l'utilisateur de choisir le niveau du labyrinthe
+	- Créer fichiers labyrinthes correspondant aux niveaux
 	- Mise à jour des diagrammes
