@@ -3,10 +3,12 @@ BACKLOG
 v1.0:
 - Permettre à l'utilisateur de bouger son personnage dans les quatre directions à l'aide d'entrées au clavier.
 - Permettre à l'utilisateur de connaître la position de son personnage après chaque mouvement.
+- Tests unitaires
 
 v2.0:
 - Permettre à l'utilisateur d'afficher graphiquement son personnage à l'aide de figures géométriques.
 - Permettre à l'utilisateur de déplacer graphiquement son personnage.
+- Tests unitaires
 
 v3.0:
 - Transformer le labyrinthe en grille 2D composée de cases
@@ -20,3 +22,4 @@ v3.0:
 - Générer labyrinthe à partir de fichier texte
 - Implémenter, afficher et déplacer les téléporteurs
 - Gérer les collisions héro/téléporteur (téléportation)
+- Tests unitaires

@@ -33,14 +33,14 @@ A la racine du projet:
 	- Mise à jour du diagramme de classe
 
 #### Répartition des tâches:
-  - Mise à jour des diagrammes: Loïc
-  - Mise en place du pattern MVC: Louise, Léo
+	- Mise à jour des diagrammes: Loïc
+	- Mise en place du pattern MVC: Louise, Léo
 	- Packaging et refactoring: Loïc
 
 ### Sprint 3:
 
 #### Objectifs:
-  - Convertir la carte du labyrinthe en grille 2D et modifier les déplacements en conséquence
+	- Convertir la carte du labyrinthe en grille 2D et modifier les déplacements en conséquence
 	- Mise en place des cases mur / trésor / pièges / magiques / passages
 	- Intégration des collisions du héro pour chaque type de case
 	- Génération du labyrinthe depuis fichier texte
@@ -52,6 +52,7 @@ A la racine du projet:
 	- Intégration des collisions du héro pour chaque type de case: Loïc, Louise
 	- Génération du labyrinthe depuis fichier texte: Loïc
 	- Mise à jour des diagrammes: Louise
+	- Mise à jour des tests: Loïc
 
 ### Sprint 4:
 
