@@ -14,52 +14,52 @@ public class HeroTest {
 
     @Test
     public void heroOnOriginPos() {
-      assertEquals(this.game.getHero().getX(), 3);
-      assertEquals(this.game.getHero().getY(), 3);
+      assertEquals(3, this.game.getHero().getX());
+      assertEquals(3, this.game.getHero().getY());
     }
 
     @Test
     public void moveUp() {
       this.game.evolve(Cmd.UP);
-      assertEquals(this.game.getHero().getX(), 3);
-      assertEquals(this.game.getHero().getY(), 2);
+      assertEquals(3, this.game.getHero().getX());
+      assertEquals(2, this.game.getHero().getY());
     }
 
     @Test
     public void moveRight() {
       this.game.evolve(Cmd.RIGHT);
-      assertEquals(this.game.getHero().getX(), 4);
-      assertEquals(this.game.getHero().getY(), 3);
+      assertEquals(4, this.game.getHero().getX());
+      assertEquals(3, this.game.getHero().getY());
     }
 
     @Test
     public void moveBottom() {
       this.game.evolve(Cmd.DOWN);
-      assertEquals(this.game.getHero().getX(), 3);
-      assertEquals(this.game.getHero().getY(), 4);
+      assertEquals(3, this.game.getHero().getX());
+      assertEquals(4, this.game.getHero().getY());
     }
 
     @Test
     public void moveLeft() {
       this.game.evolve(Cmd.LEFT);
-      assertEquals(this.game.getHero().getX(), 2);
-      assertEquals(this.game.getHero().getY(), 3);
+      assertEquals(2, this.game.getHero().getX());
+      assertEquals(3, this.game.getHero().getY());
     }
 
     @Test
     public void moveRightTwice() {
       this.game.evolve(Cmd.RIGHT);
       this.game.evolve(Cmd.RIGHT);
-      assertEquals(this.game.getHero().getX(), 5);
-      assertEquals(this.game.getHero().getY(), 3);
+      assertEquals(5, this.game.getHero().getX());
+      assertEquals(3, this.game.getHero().getY());
     }
 
     @Test
     public void moveRightAndBottom() {
       this.game.evolve(Cmd.RIGHT);
       this.game.evolve(Cmd.DOWN);
-      assertEquals(this.game.getHero().getX(), 4);
-      assertEquals(this.game.getHero().getY(), 4);
+      assertEquals(4, this.game.getHero().getX());
+      assertEquals(4, this.game.getHero().getY());
     }
 
 }
