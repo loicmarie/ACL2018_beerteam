@@ -22,6 +22,9 @@ public class main {
        		// classe qui lance le moteur de jeu generique
        		GameEngineGraphical engine = new GameEngineGraphical(game, painter, controller);
 
+          if (lvl == 1)
+            game.showHelp("resources/help/help.txt");
+
        		engine.run();
 
           if (game.getHero().isDead()) {

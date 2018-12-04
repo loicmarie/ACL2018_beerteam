@@ -25,7 +25,31 @@ public class LabyrinthGame implements Game {
 	 * constructeur avec fichier source pour le help
 	 *
 	 */
-	public LabyrinthGame(String source) {
+	public LabyrinthGame(String sourceLvl) {
+		this.generateLvl(sourceLvl);
+	}
+
+	public LabyrinthGame() {
+		this("resources/lvl1.txt");
+	}
+
+	public void showHelp(String source) {
+		BufferedReader helpReader;
+		try {
+			InputStream is = getClass().getResourceAsStream(source);
+			InputStreamReader isr = new InputStreamReader(is);
+			helpReader = new BufferedReader(isr);
+			String ligne;
+			while ((ligne = helpReader.readLine()) != null) {
+				System.out.println(ligne);
+			}
+			helpReader.close();
+		} catch (IOException e) {
+			System.out.println("Help not available");
+		}
+	}
+
+	private void generateLvl(String source) {
 		BufferedReader helpReader;
 		try {
 			InputStream is = getClass().getResourceAsStream(source);
@@ -68,12 +92,8 @@ public class LabyrinthGame implements Game {
 			}
 			helpReader.close();
 		} catch (IOException e) {
-			System.out.println("Help not available");
+			System.out.println("Error when reading file");
 		}
-	}
-
-	public LabyrinthGame() {
-		this("resources/lvl1.txt");
 	}
 
 	private void moveHero(Cmd commande) {
@@ -83,7 +103,7 @@ public class LabyrinthGame implements Game {
 		int x = this.hero.getX(),
 				y = this.hero.getY();
 		if (this.isTreasure(x,y)) {
-			
+
 		} else if (this.isTeleporter(x, y)) {
 			Teleporter tp = this.getTeleporter(x, y);
 			Position nextPos = tp.getNextPosition();

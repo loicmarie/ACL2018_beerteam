@@ -1,0 +1,39 @@
+################################
+## Ballade dans un Labyrinthe ##
+################################
+
+Cree par Louise POUNT, Leo MARTIN et Loic MARIE
+
+###########################
+
+But du jeu:
+
+Vous devez amener votre heros sur une case tresor afin de finir un niveau.
+Si vous finissez tous les niveaux, vous finissez le jeu.
+
+Perte de la partie:
+
+Vous perdez la partie si vous tombez dans un piege (representes graphiquement par des torches),
+ou si vous tombez sur la meme case qu'un monstre.
+
+Teleporteurs:
+
+Les cases représentant des escaliers vous teleportent a un autre escalier present sur la carte.
+Il n'est pas possible de connaitre la destination d'un teleporteur sans l'essayer une premiere
+fois.
+
+Mouvements du heros:
+
+Le heros se deplace en haut, a droite, en bas ou a gauche s'il n'y a pas de mur sur la case de
+destination. Les touches pour le déplacer sont Q, Z, D, S.
+
+Deroulement d'un tour:
+
+Les monstres ne bougent une seule fois, et seulement si le heros bouge. Si le heros bouge vers un
+mur, il conservera sa position mais les monstres, eux, bougeront.
+
+Intelligence des monstres:
+
+Les monstres choisissent au hasard une case de destination parmi celles qui ne sont pas des murs,
+tresors ou pieges, si celle-ci permet de se rapprocher du heros (le calcul de la distance ne prend
+pas en compte les murs).
